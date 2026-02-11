@@ -1,0 +1,18 @@
+{
+  "validArticle": {
+    "title": "Test Article for Automation",
+    "description": "This is a test article created by automation",
+    "body": "This is the body of the test article. It contains **markdown** formatting.",
+    "tags": ["testing", "automation", "cypress"]
+  },
+  "articleWithoutTags": {
+    "title": "Article Without Tags",
+    "description": "This article has no tags",
+    "body": "Body content without any tags attached."
+  },
+  "articleUpdate": {
+    "title": "Updated Article Title",
+    "description": "Updated description",
+    "body": "Updated body content for the article."
+  }
+}

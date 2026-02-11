@@ -1,0 +1,31 @@
+{
+  "name": "cypress-e2e-framework",
+  "version": "1.0.0",
+  "description": "Production-grade Cypress E2E Test Automation Framework with POM, API Testing, Custom Commands & CI/CD",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:firefox": "cypress run --browser firefox",
+    "cy:run:edge": "cypress run --browser edge",
+    "cy:run:smoke": "cypress run --spec 'cypress/e2e/smoke/**/*'",
+    "cy:run:regression": "cypress run --spec 'cypress/e2e/regression/**/*'",
+    "cy:run:api": "cypress run --spec 'cypress/e2e/api/**/*'",
+    "cy:dashboard": "cypress run --record --key ${CYPRESS_RECORD_KEY}",
+    "lint": "eslint . --ext .ts,.js",
+    "format": "prettier --write ."
+  },
+  "keywords": ["cypress", "e2e", "automation", "testing", "page-object-model", "api-testing", "custom-commands"],
+  "author": "danieldf9",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^13.6.0",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.0",
+    "cypress-mochawesome-reporter": "^3.8.0",
+    "mochawesome-merge": "^4.3.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.0",
+    "@cypress/grep": "^4.0.0"
+  }
+}
