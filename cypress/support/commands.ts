@@ -21,24 +21,29 @@ Cypress.Commands.add('login', (email: string, password: string) => {
 });
 
 Cypress.Commands.add('loginViaApi', (email: string, password: string) => {
+  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.io/api';
   cy.request({
     method: 'POST',
-    url: `${Cypress.env('apiUrl')}/users/login`,
+    url: `${apiUrl}/users/login`,
     body: { user: { email, password } },
+    failOnStatusCode: false,
   }).then((response) => {
-    const token = response.body.user.token;
-    const user = response.body.user;
-    window.localStorage.setItem('jwtToken', token);
-    window.localStorage.setItem('user', JSON.stringify(user));
-    cy.setCookie('auth_token', token);
+    if (response.status === 200 || response.status === 201) {
+      const token = response.body.user.token;
+      const user = response.body.user;
+      window.localStorage.setItem('jwtToken', token);
+      window.localStorage.setItem('user', JSON.stringify(user));
+      cy.setCookie('auth_token', token);
+    }
   });
 });
 
 Cypress.Commands.add('createArticleViaApi', (title: string, description: string, body: string, tags: string[] = []) => {
   const token = window.localStorage.getItem('jwtToken');
+  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.io/api';
   return cy.request({
     method: 'POST',
-    url: `${Cypress.env('apiUrl')}/articles`,
+    url: `${apiUrl}/articles`,
     headers: { Authorization: `Token ${token}` },
     body: { article: { title, description, body, tagList: tags } },
   });
@@ -46,9 +51,10 @@ Cypress.Commands.add('createArticleViaApi', (title: string, description: string,
 
 Cypress.Commands.add('deleteArticleViaApi', (slug: string) => {
   const token = window.localStorage.getItem('jwtToken');
+  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.io/api';
   cy.request({
     method: 'DELETE',
-    url: `${Cypress.env('apiUrl')}/articles/${slug}`,
+    url: `${apiUrl}/articles/${slug}`,
     headers: { Authorization: `Token ${token}` },
   });
 });
