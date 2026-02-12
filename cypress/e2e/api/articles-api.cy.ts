@@ -40,6 +40,25 @@ describe('Articles API Tests', { tags: ['@api'] }, () => {
     });
   });
 
+  it('GET /articles/:slug - should return specific article', () => {
+    cy.request({
+      method: 'POST',
+      url: `${apiUrl}/articles`,
+      headers: { Authorization: `Token ${authToken}` },
+      body: { article: { title: `Slug Test ${uniqueId}`, description: 'Test', body: 'Body content' } },
+    }).then((createResponse) => {
+      const slug = createResponse.body.article.slug;
+      cy.request({
+        method: 'GET',
+        url: `${apiUrl}/articles/${slug}`,
+        headers: { Authorization: `Token ${authToken}` },
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+        expect(response.body.article.slug).to.eq(slug);
+      });
+    });
+  });
+
   it('DELETE /articles/:slug - should delete an article', () => {
     cy.request({
       method: 'POST',
