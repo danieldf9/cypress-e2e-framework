@@ -27,9 +27,7 @@ jobs:
           install: false
           spec: cypress/e2e/api/**/*.cy.ts
         env:
-          CYPRESS_apiUrl: https://api.realworld.io/api
-          CYPRESS_testUserEmail: testuser@example.com
-          CYPRESS_testUserPassword: Password123!
+          CYPRESS_apiUrl: https://api.realworld.show/api
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -70,7 +68,7 @@ jobs:
           browser: ${{ matrix.browser }}
           spec: cypress/e2e/smoke/**/*.cy.ts
         env:
-          CYPRESS_apiUrl: https://api.realworld.io/api
+          CYPRESS_apiUrl: https://api.realworld.show/api
           CYPRESS_testUserEmail: ${{ secrets.TEST_USER_EMAIL || 'testuser@example.com' }}
           CYPRESS_testUserPassword: ${{ secrets.TEST_USER_PASSWORD || 'Password123!' }}
 
@@ -110,7 +108,7 @@ jobs:
           browser: chrome
           spec: cypress/e2e/regression/**/*.cy.ts
         env:
-          CYPRESS_apiUrl: https://api.realworld.io/api
+          CYPRESS_apiUrl: https://api.realworld.show/api
           CYPRESS_testUserEmail: ${{ secrets.TEST_USER_EMAIL || 'testuser@example.com' }}
           CYPRESS_testUserPassword: ${{ secrets.TEST_USER_PASSWORD || 'Password123!' }}
 

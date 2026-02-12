@@ -2,7 +2,7 @@ import { defineConfig } from 'cypress';
 
 export default defineConfig({
   e2e: {
-    baseUrl: 'https://demo.realworld.io',
+    baseUrl: 'https://demo.realworld.show',
     specPattern: 'cypress/e2e/**/*.cy.{ts,js}',
     supportFile: 'cypress/support/e2e.ts',
     viewportWidth: 1280,
@@ -23,7 +23,7 @@ export default defineConfig({
       return config;
     },
     env: {
-      apiUrl: 'https://api.realworld.io/api',
+      apiUrl: 'https://api.realworld.show/api',
       testUserEmail: 'testuser@example.com',
       testUserPassword: 'Password123!',
     },

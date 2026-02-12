@@ -1,5 +1,5 @@
 describe('Users API Tests', { tags: ['@api'] }, () => {
-  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.io/api';
+  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.show/api';
   const uniqueId = Date.now().toString().slice(-8);
 
   it('POST /users - should register a new user', () => {

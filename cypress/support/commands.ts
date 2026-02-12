@@ -21,7 +21,7 @@ Cypress.Commands.add('login', (email: string, password: string) => {
 });
 
 Cypress.Commands.add('loginViaApi', (email: string, password: string) => {
-  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.io/api';
+  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.show/api';
   cy.request({
     method: 'POST',
     url: `${apiUrl}/users/login`,
@@ -40,7 +40,7 @@ Cypress.Commands.add('loginViaApi', (email: string, password: string) => {
 
 Cypress.Commands.add('createArticleViaApi', (title: string, description: string, body: string, tags: string[] = []) => {
   const token = window.localStorage.getItem('jwtToken');
-  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.io/api';
+  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.show/api';
   return cy.request({
     method: 'POST',
     url: `${apiUrl}/articles`,
@@ -51,7 +51,7 @@ Cypress.Commands.add('createArticleViaApi', (title: string, description: string,
 
 Cypress.Commands.add('deleteArticleViaApi', (slug: string) => {
   const token = window.localStorage.getItem('jwtToken');
-  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.io/api';
+  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.show/api';
   cy.request({
     method: 'DELETE',
     url: `${apiUrl}/articles/${slug}`,

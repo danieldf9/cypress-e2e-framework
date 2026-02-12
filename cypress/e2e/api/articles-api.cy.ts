@@ -1,5 +1,5 @@
 describe('Articles API Tests', { tags: ['@api'] }, () => {
-  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.io/api';
+  const apiUrl = Cypress.env('apiUrl') || 'https://api.realworld.show/api';
   const uniqueId = Date.now().toString().slice(-8);
   let authToken: string;
 
